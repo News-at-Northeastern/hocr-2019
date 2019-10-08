@@ -55,10 +55,10 @@ window.onscroll = function() {
             setActiveChapter(chapterName);
             break;
         }
-    }
+    } 
 };
 
-var activeChapterName = 'baker';
+var activeChapterName = 'start';
 function setActiveChapter(chapterName) {
     if (chapterName === activeChapterName) return;
 
