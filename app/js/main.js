@@ -10,18 +10,25 @@ var map = new mapboxgl.Map({
 });
 
 var chapters = {
-    'start': {
+    'overview': {
         center: [-71.129700, 42.363347],
         zoom: 13,
         bearing: 0,
         pitch: 0
+    },
+    'start': {
+        center: [-71.107867, 42.352555],
+        zoom: 18.5,
+        bearing: -80,
+        pitch: 70,
+        speed: 0.75
     },
     'river': {
         center: [-71.117061, 42.361054],
         zoom: 18,
         bearing: 0,
         pitch: 90,
-        speed: 0.5
+        speed: 0.75
     },
     'weeks': {
         center: [-71.117651, 42.368204],
@@ -48,6 +55,13 @@ var chapters = {
 
 // On every scroll event, check which element is on screen
 window.onscroll = function() {
+    var mapelement = document.getElementById('map');
+    if (!mapelement.classList.contains("mapfix") && isElementAtTop('map')) {
+        mapelement.classList.add("mapfix");
+    }
+    // else if (!isElementOnScreen('finish')) {
+    //     mapelement.classList.remove("mapfix");
+    // }
     var chapterNames = Object.keys(chapters);
     for (var i = 0; i < chapterNames.length; i++) {
         var chapterName = chapterNames[i];
@@ -55,10 +69,10 @@ window.onscroll = function() {
             setActiveChapter(chapterName);
             break;
         }
-    } 
+    }
 };
 
-var activeChapterName = 'start';
+var activeChapterName = 'overview';
 function setActiveChapter(chapterName) {
     if (chapterName === activeChapterName) return;
 
@@ -73,5 +87,11 @@ function setActiveChapter(chapterName) {
 function isElementOnScreen(id) {
     var element = document.getElementById(id);
     var bounds = element.getBoundingClientRect();
-    return bounds.top < window.innerHeight && bounds.bottom > 0;
+    return bounds.top < window.innerHeight && bounds.bottom > 160;
+}
+
+function isElementAtTop(id) {
+    var element = document.getElementById(id);
+    var bounds = element.getBoundingClientRect();
+    return bounds.top <= 60;
 }
