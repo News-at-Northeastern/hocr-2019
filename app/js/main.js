@@ -58,15 +58,19 @@ var chapters = {
 // On every scroll event, check which element is on screen
 window.onscroll = function() {
     var mapelement = document.getElementById('map');
+    // fix map if user scrolls to it
     if (!mapelement.classList.contains("mapfix") && isElementAtTop('map') && !isElementPassed('finish')) {
         mapelement.classList.add("mapfix");
     }
-    else if (mapelement.classList.contains("mapfix") && !isElementAtTop('overview') && !mobilecheck()) {
+    // un-fix map if user scrolls to top, desktop
+    else if (!mobilecheck() && mapelement.classList.contains("mapfix") && !isElementAtTop('overview')) {
         mapelement.classList.remove("mapfix");
     }
+    // un-fix map if user scrolls to top, mobile
     else if (mobilecheck() && mapelement.classList.contains("mapfix") && (document.getElementById('overview').getBoundingClientRect().top > window.innerHeight*0.5)) {
         mapelement.classList.remove("mapfix");
     }
+    // un-fix map if user scrolls past it
     else if (mapelement.classList.contains("mapfix") && isElementPassed('finish')) {
         mapelement.classList.remove("mapfix");
     }
