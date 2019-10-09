@@ -1,3 +1,5 @@
+function mobilecheck() { return (window.innerWidth <= 768); }
+
 mapboxgl.accessToken = 'pk.eyJ1IjoidG1hY2hhZG9udSIsImEiOiJjanVjdDFudDMwMDR4NGRtdGJ4NndiaW9pIn0.JS0ffUQym0L07752GAwMFg';
 
 var map = new mapboxgl.Map({
@@ -87,7 +89,11 @@ function setActiveChapter(chapterName) {
 function isElementOnScreen(id) {
     var element = document.getElementById(id);
     var bounds = element.getBoundingClientRect();
-    return bounds.top < window.innerHeight && bounds.bottom > 160;
+    if (mobilecheck()) {
+        return bounds.top < window.innerHeight && bounds.bottom > (window.innerWidth * 0.66);
+    } else {
+        return bounds.top < window.innerHeight && bounds.bottom > 160;
+    }
 }
 
 function isElementAtTop(id) {
