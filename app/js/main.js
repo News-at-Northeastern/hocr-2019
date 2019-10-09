@@ -61,6 +61,12 @@ window.onscroll = function() {
     if (!mapelement.classList.contains("mapfix") && isElementAtTop('map') && !isElementPassed('finish')) {
         mapelement.classList.add("mapfix");
     }
+    else if (mapelement.classList.contains("mapfix") && !isElementAtTop('overview') && !mobilecheck()) {
+        mapelement.classList.remove("mapfix");
+    }
+    else if (mobilecheck() && mapelement.classList.contains("mapfix") && (document.getElementById('overview').getBoundingClientRect().top > window.innerHeight*0.5)) {
+        mapelement.classList.remove("mapfix");
+    }
     else if (mapelement.classList.contains("mapfix") && isElementPassed('finish')) {
         mapelement.classList.remove("mapfix");
     }
