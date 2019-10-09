@@ -58,12 +58,12 @@ var chapters = {
 // On every scroll event, check which element is on screen
 window.onscroll = function() {
     var mapelement = document.getElementById('map');
-    if (!mapelement.classList.contains("mapfix") && isElementAtTop('map')) {
+    if (!mapelement.classList.contains("mapfix") && isElementAtTop('map') && !isElementPassed('finish')) {
         mapelement.classList.add("mapfix");
     }
-    // else if (!isElementOnScreen('finish')) {
-    //     mapelement.classList.remove("mapfix");
-    // }
+    else if (mapelement.classList.contains("mapfix") && isElementPassed('finish')) {
+        mapelement.classList.remove("mapfix");
+    }
     var chapterNames = Object.keys(chapters);
     for (var i = 0; i < chapterNames.length; i++) {
         var chapterName = chapterNames[i];
@@ -100,4 +100,14 @@ function isElementAtTop(id) {
     var element = document.getElementById(id);
     var bounds = element.getBoundingClientRect();
     return bounds.top <= 60;
+}
+
+function isElementPassed(id) {
+    var element = document.getElementById(id);
+    var bounds = element.getBoundingClientRect();
+    if (mobilecheck()) {
+        return bounds.bottom <= (window.innerHeight * 0.5);
+    } else {
+        return bounds.bottom <= 0;
+    }
 }
