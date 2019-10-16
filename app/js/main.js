@@ -8,10 +8,11 @@ var map = new mapboxgl.Map({
     center: [-71.129700, 42.363347],
     zoom: 13,
     bearing: 0,
-    pitch: 0
+    pitch: 0,
+    interactive: false
 });
 
-map.scrollZoom.disable();
+// map.scrollZoom.disable();
 
 var chapters = {
     'overview': {
