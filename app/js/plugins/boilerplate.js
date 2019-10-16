@@ -11,6 +11,8 @@ var map = new mapboxgl.Map({
     pitch: 0
 });
 
+map.scrollZoom.disable();
+
 var chapters = {
     'overview': {
         center: [-71.129700, 42.363347],
