@@ -379,7 +379,7 @@ var geojson = {
     "features": [{
             "type": "Feature",
             "properties": {
-                "icon": "start_flags_icon.png",
+                "icon": "../interactive/2019/10/hocr/assets/start_flags_icon.png",
                 "iconSize": [50, 50],
                 "title": "Start"
             },
@@ -392,7 +392,7 @@ var geojson = {
             "type": "Feature",
             "properties": {
 
-                "icon": "finish_line_icon.png",
+                "icon": "../interactive/2019/10/hocr/assets/finish_line_icon.png",
                 "iconSize": [50, 50],
                 "title": "End"
             },
@@ -466,6 +466,12 @@ window.onscroll = function() {
 var activeChapterName = 'overview';
 function setActiveChapter(chapterName) {
     if (chapterName === activeChapterName) return;
+
+    if (window.innerWidth <= 768){
+        chapters[chapterName].zoom = 16;
+    }
+
+    console.log(chapters[chapterName]);
 
     map.flyTo(chapters[chapterName]);
 
