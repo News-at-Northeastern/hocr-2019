@@ -1,5 +1,7 @@
 @media (max-width: 768px) {
     .wrapper {
+        overflow: initial;
+        
         #map {
             width: calc(100vw - 40px);
             height:37vw;
@@ -11,6 +13,7 @@
             position: relative;
             top: 50vh;
             margin-left: 0;
+            margin-bottom:0;
         }
     }
 }

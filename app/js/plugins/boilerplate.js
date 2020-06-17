@@ -14,6 +14,109 @@ var map = new mapboxgl.Map({
 
 map.on('load', function() {
 
+
+    map.addLayer({
+        "id": "points",
+        "type": "symbol",
+        "source": {
+            "type": "geojson",
+            "data": {
+                "type": "FeatureCollection",
+                "features": [{
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [-71.108619, 42.352574]
+                        },
+                        "properties": {
+                            "title": "Start"
+                        }
+                    },
+                    {
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [-71.135380, 42.367429]
+                        },
+                        "properties": {
+                            "title": "End"
+                        }
+                    },
+                    {
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [-71.109588, 42.356637]
+                        },
+                        "properties": {
+                            "title": "Boston University Bridge"
+                        }
+                    },
+                    {
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [-71.116776, 42.361251]
+                        },
+                        "properties": {
+                            "title": "River Street Bridge"
+                        }
+                    },
+                    {
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [-71.118484, 42.365177]
+                        },
+                        "properties": {
+                            "title": "Western Avenue Bridge"
+                        }
+                    },
+                    {
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [-71.118221, 42.368415]
+                        },
+                        "properties": {
+                            "title": "John W. Weeks Footbridge"
+                        }
+                    },
+                    {
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [-71.123179, 42.369028]
+                        },
+                        "properties": {
+                            "title": "Anderson Memorial Bridge"
+                        }
+                    },
+                    {
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [-71.132737, 42.371789]
+                        },
+                        "properties": {
+                            "title": "Eliot Bridge"
+                        }
+                    }
+                ]
+            }
+        },
+        "layout": {
+            // "icon-image": "{icon}-15",
+            "text-field": "{title}",
+            "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+            "text-offset": [0, 1.5],
+            "text-anchor": "top",
+        },
+        "paint": {
+            "text-color": "#ffffff"
+        }
+    });
+
     map.addLayer({
         "id": "route",
         "type": "line",
@@ -130,112 +233,6 @@ map.on('load', function() {
             "line-width": 5
         }
     });
-
-    // map.loadImage('js/finish_line_icon.png', function(error, image) {
-    //     if (error) throw error;
-    //     map.addImage('finish', image);
-    //     map.addLayer({
-    //     "id": "points",
-    //     "type": "symbol",
-    //     "source": {
-    //         "type": "geojson",
-    //         "data": {
-    //             "type": "FeatureCollection",
-    //             "features": [{
-    //                 "type": "Feature",
-    //                 "geometry": {
-    //                     "type": "Point",
-    //                     "coordinates": [-71.135380, 42.367429]
-    //                 }
-    //             }]
-    //         }
-    //     },
-    //     "layout": {
-    //         "icon-image": "finish",
-    //         "icon-size": 0.25
-    //     }
-    //     });
-    //     });
-
-///Users/eesomonu1994/Desktop/mapbox_sample/app/assets/finish_line_icon.png
-    // map.addLayer({
-    //     "id": "points",
-    //     "type": "symbol",
-    //     "source": {
-    //         "type": "geojson",
-    //         "data": {
-    //             "type": "FeatureCollection",
-    //             "features": [{
-    //                     "type": "Feature",
-    //                     "geometry": {
-    //                         "type": "Point",
-    //                         "coordinates": [-71.108619, 42.352574]
-    //                     },
-    //                     "properties": {
-    //                         "title": "Start",
-    //                         "icon": "embassy"
-    //                     }
-    //                 },
-    //                 {
-    //                     "type": "Feature",
-    //                     "geometry": {
-    //                         "type": "Point",
-    //                         "coordinates": [-71.135380, 42.367429]
-    //                     },
-    //                     "properties": {
-    //                         "title": "End",
-    //                         "icon": "embassy"
-    //                     }
-    //                 }
-    //             ]
-    //         }
-    //     },
-    //     "layout": {
-    //         "icon-image": "{icon}-15",
-    //         "text-field": "{title}",
-    //         "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-    //         "text-offset": [0, 0.6],
-    //         "text-anchor": "top",
-    //
-    //     },
-    //     "paint": {
-    //         "text-color": "#ffffff"
-    //     }
-    // });
-
-
-
-    // map.addSource("source_circle_500", {
-    //     "type": "geojson",
-    //     "data": {
-    //       "type": "FeatureCollection",
-    //       "features": [{
-    //         "type": "Feature",
-    //         "geometry": {
-    //           "type": "Point",
-    //           "coordinates": [-71.1297, 42.363347]
-    //         }
-    //       }]
-    //     }
-    //   });
-    //
-    // map.addLayer({
-    //   "id": "circle500",
-    //   "type": "circle",
-    //   "source": "source_circle_500",
-    //   "paint": {
-    //     "circle-radius": {
-    //       stops: [
-    //         [5, 1],
-    //         [15, s]
-    //       ],
-    //       base: 2
-    //     },
-    //     "circle-color": "red",
-    //     "circle-opacity": 0.6
-    //   }
-    // });
-
 });
 
 var chapters = {
@@ -471,8 +468,6 @@ function setActiveChapter(chapterName) {
         chapters[chapterName].zoom = 16;
     }
 
-    console.log(chapters[chapterName]);
-
     map.flyTo(chapters[chapterName]);
 
     document.getElementById(chapterName).setAttribute('class', 'active');
@@ -503,6 +498,6 @@ function isElementPassed(id) {
     if (mobilecheck()) {
         return bounds.bottom <= (window.innerHeight * 0.5);
     } else {
-        return bounds.bottom <= 0;
+        return bounds.bottom <= (window.innerHeight * 0.25);
     }
 }
